@@ -1,0 +1,11 @@
+# AURA First Independent Script
+INJECT "Astitva (Existence)" -> "Chetna (Consciousness)" (0.90)
+INJECT "Chetna (Consciousness)" -> "Gyan (Knowledge)" (0.85)
+
+# वेव प्रोपेगेशन टेस्ट
+PROPAGATE "Astitva (Existence)" DEPTH 2
+
+# सेमांटिक कंडीशन टेस्ट
+IF "Chetna (Consciousness)" {
+    INJECT "Gyan (Knowledge)" -> "Vikas (Evolution)" (0.95)
+}

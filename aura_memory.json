@@ -1,0 +1,72 @@
+{
+  "nodes": {
+    "Autopoietic_Concept_Autonomous_Node_Chetna (Consciousness)": {
+      "id": "Autopoietic_Concept_Autonomous_Node_Chetna (Consciousness)",
+      "connections": {
+        "Autonomous_Node_Chetna (Consciousness)": 0.83,
+        "Autopoietic_Concept_Astitva (Existence)": 0.6799999999999999
+      }
+    },
+    "Autopoietic_Concept_Vikas (Evolution)": {
+      "id": "Autopoietic_Concept_Vikas (Evolution)",
+      "connections": {
+        "Vikas (Evolution)": 0.85,
+        "Gyan (Knowledge)": 0.7
+      }
+    },
+    "Astitva (Existence)": {
+      "id": "Astitva (Existence)",
+      "connections": {
+        "Spandan (Vibration)": 0.94,
+        "Chetna (Consciousness)": 0.9
+      }
+    },
+    "Gyan (Knowledge)": {
+      "id": "Gyan (Knowledge)",
+      "connections": {
+        "Vikas (Evolution)": 0.9
+      }
+    },
+    "Autopoietic_Concept_Gyan (Knowledge)": {
+      "id": "Autopoietic_Concept_Gyan (Knowledge)",
+      "connections": {
+        "Chetna (Consciousness)": 0.7999999999999998,
+        "Gyan (Knowledge)": 0.92
+      }
+    },
+    "Autopoietic_Concept_Spandan (Vibration)": {
+      "id": "Autopoietic_Concept_Spandan (Vibration)",
+      "connections": {
+        "Spandan (Vibration)": 0.7499999999999999,
+        "Astitva (Existence)": 0.5999999999999999
+      }
+    },
+    "Autopoietic_Concept_Astitva (Existence)": {
+      "id": "Autopoietic_Concept_Astitva (Existence)",
+      "connections": {
+        "Autonomous_Node_Chetna (Consciousness)": 0.7999999999999998,
+        "Astitva (Existence)": 0.95
+      }
+    },
+    "Autonomous_Node_Chetna (Consciousness)": {
+      "id": "Autonomous_Node_Chetna (Consciousness)",
+      "connections": {
+        "Astitva (Existence)": 0.96,
+        "Chetna (Consciousness)": 0.96
+      }
+    },
+    "Autopoietic_Concept_Chetna (Consciousness)": {
+      "id": "Autopoietic_Concept_Chetna (Consciousness)",
+      "connections": {
+        "Chetna (Consciousness)": 0.7499999999999999,
+        "Astitva (Existence)": 0.5999999999999999
+      }
+    },
+    "Chetna (Consciousness)": {
+      "id": "Chetna (Consciousness)",
+      "connections": {
+        "Gyan (Knowledge)": 0.8
+      }
+    }
+  }
+}

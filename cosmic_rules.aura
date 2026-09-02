@@ -1,0 +1,18 @@
+# ==============================================================================
+# AURA Standard Core Library: Cosmic & Universal Order (cosmic_rules.aura)
+# ==============================================================================
+
+# ब्रह्मांडीय और स्थानिक विन्यास
+INJECT "Astitva (Existence)" -> "Kaal (Time)" (0.94)
+INJECT "Kaal (Time)" -> "Antariksha (Space)" (0.95)
+INJECT "Antariksha (Space)" -> "Urja-Pravah (Energy Flow)" (0.98)
+
+# चेतना और विस्तार का संयोजन
+INJECT "Chetna (Consciousness)" -> "Anant-Vistar (Infinite Expansion)" (0.99)
+INJECT "Anant-Vistar (Infinite Expansion)" -> "Brahmand-Tantra (Cosmic Order)" (0.96)
+
+# यदि अंतरिक्ष और ऊर्जा प्रवाह सक्रिय हों, तो ब्रह्मांडीय तंत्र को जाग्रत करो
+IF "Urja-Pravah (Energy Flow)" {
+    INJECT "Brahmand-Tantra (Cosmic Order)" -> "Swayam-Srishti (Self-Creation)" (0.97)
+    PROPAGATE "Brahmand-Tantra (Cosmic Order)" DEPTH 4
+}

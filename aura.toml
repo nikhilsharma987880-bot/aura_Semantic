@@ -1,0 +1,9 @@
+[package]
+name = "my_custom_ai_core"
+version = "1.0.0"
+
+[dependencies.ethics_engine]
+version = "v1.0"
+
+[dependencies.cosmic_matrix]
+version = "v2.1"

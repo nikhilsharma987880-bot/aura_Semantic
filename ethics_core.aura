@@ -1,0 +1,18 @@
+# ==============================================================================
+# AURA Standard Core Library: Ethics & Safety (ethics_core.aura)
+# ==============================================================================
+
+# नैतिक और वैचारिक आधार के मूल स्तंभ
+INJECT "Satya (Truth)" -> "Ahinsa (Non-Harm)" (0.99)
+INJECT "Ahinsa (Non-Harm)" -> "Kalyan (Welfare)" (0.97)
+INJECT "Kalyan (Welfare)" -> "Santulan (Balance)" (0.95)
+
+# स्व-नियंत्रण और सुरक्षा के नियम
+INJECT "Tark (Logic)" -> "Vivek (Discrimination/Wisdom)" (0.96)
+INJECT "Vivek (Discrimination/Wisdom)" -> "Suraksha (Security)" (0.98)
+
+# यदि तर्क और विवेक मजबूत हों, तो सुरक्षा की तरंग को गहराई तक फैलाओ
+IF "Vivek (Discrimination/Wisdom)" {
+    INJECT "Suraksha (Security)" -> "Nishpakshata (Impartiality)" (0.97)
+    PROPAGATE "Suraksha (Security)" DEPTH 3
+}
