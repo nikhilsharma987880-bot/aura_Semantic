@@ -1,0 +1,9 @@
+[
+  {
+    "Inject": {
+      "source": "Aura_Core",
+      "target": "Semantic_Engine",
+      "weight": 0.85
+    }
+  }
+]

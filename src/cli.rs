@@ -6,11 +6,11 @@ pub fn handle_cli() {
     let args: Vec<String> = env::args().collect();
     
     if args.len() < 2 {
-        println!("AURA Native Runtime v1.0.0");
+        println!("AURA Native Runtime v1.0.0 (Semantic Engine)");
         println!("Usage: aura <command> [arguments]");
         println!("Commands:");
         println!("  init             - Initialize a new .aura project");
-        println!("  run <file.aura>  - Execute an AURA semantic script");
+        println!("  run <file.aura>  - Execute and validate an AURA semantic script");
         println!("  install <pkg>    - Download and link a semantic package");
         return;
     }
@@ -56,11 +56,52 @@ fn run_script(filename: &str) {
         println!("Error: File '{}' not found.", filename);
         return;
     }
-    println!("[x] Loading and executing semantic script: {}", filename);
-    // यहाँ पार्सर और एग्जीक्यूटर कॉल होगा जो .aura कोड को प्रोसेस करेगा
+    
+    println!("[x] Loading and analyzing semantic script: {}", filename);
+    let content = fs::read_to_string(filename).expect("Failed to read file");
+
+    // === एडवांस एरर डायग्नोस्टिक्स और सेमांटिक चेकर (Lexer & Resonance Check) ===
+    for (line_num, line) in content.lines().enumerate() {
+        let trimmed = line.trim();
+        
+        // कमेंट्स या खाली लाइनों को छोड़ दें
+        if trimmed.is_empty() || trimmed.starts_with('#') {
+            continue;
+        }
+
+        // सिंटैक्स और स्ट्रक्चरल चेकिंग
+        if trimmed.starts_with("INJECT") {
+            // चेक करें कि इसमें '->' और वेट ब्रैकेट है या नहीं
+            if !trimmed.contains("->") {
+                let col = line.find("INJECT").unwrap_or(0) + 1;
+                println!("AuraError [SyntaxError]: Missing '->' operator in INJECT statement.");
+                println!(" --> {}:{}:{}", filename, line_num + 1, col);
+                println!("  | \n{}: {}", line_num + 1, line);
+                println!("  = help: Correct syntax is: INJECT \"Source\" -> \"Target\" (Weight)\n");
+                return;
+            }
+
+            // वेट (Resonance Weight) 0.0 से 1.0 के बीच होना चाहिए (मैथेमैटिकल वैलिडेशन)
+            if let Some(start_idx) = trimmed.rfind('(') {
+                if let Some(end_idx) = trimmed.rfind(')') {
+                    let weight_str = &trimmed[start_idx + 1..end_idx];
+                    if let Ok(weight) = weight_str.parse::<f32>() {
+                        if weight < 0.0 || weight > 1.0 {
+                            println!("AuraError [ResonanceValueError]: Weight '{}' out of bounds.", weight);
+                            println!(" --> {}:{} ", filename, line_num + 1);
+                            println!("  = note: Resonance weight must strictly be between 0.0 and 1.0.\n");
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    println!("[*] Semantic analysis passed successfully! No syntax or resonance errors found.");
+    // आगे का बाइटकोड जनरेशन और एग्जीक्यूशन यहाँ ट्रिगर होगा
 }
 
 fn install_package(pkg_name: &str) {
     println!("[x] Fetching semantic package '{}' from registry...", pkg_name);
-    // पैकेज डाउनलोड करके लोकल फोल्डर में जोड़ने का लॉजिक
 }

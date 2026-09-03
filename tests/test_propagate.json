@@ -1,0 +1,8 @@
+[
+  {
+    "Propagate": {
+      "target": "Aura_Core",
+      "depth": 3
+    }
+  }
+]

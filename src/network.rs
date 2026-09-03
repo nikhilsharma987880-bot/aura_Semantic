@@ -38,6 +38,22 @@ impl SemanticNetwork {
         None
     }
 
+    pub fn inspect_fabric(&self) {
+        println!("[*] Inspecting Semantic Network Fabric...");
+        println!("[*] Active Network Nodes count: {}", self.nodes.len());
+        for (id, node) in &self.nodes {
+            println!("    Node: {} -> Connections: {}", id, node.connections.len());
+        }
+    }
+
+    pub fn start_autonomous_heartbeat(&mut self, cycles: usize) {
+        println!("[*] Starting autonomous heartbeat execution for {} cycles...", cycles);
+        for i in 1..=cycles {
+            println!("[Heartbeat] Cycle {}/{} running cognitive rhythm...", i, cycles);
+            self.decay_and_prune();
+        }
+    }
+
     // --- कॉग्निटिव डीके और प्रूनिंग ---
     pub fn decay_and_prune(&mut self) {
         let threshold = 0.15;
@@ -70,18 +86,16 @@ impl SemanticNetwork {
         }
     }
 
-    // --- नया फीचर: ऑटोनॉमस कॉन्सेप्ट सिंथेसिस (Hybrid Concept Generation) ---
+    // --- ऑटोनॉमस कॉन्सेप्ट सिंथेसिस (Hybrid Concept Generation) ---
     pub fn synthesize_concepts(&mut self, memory_file: &str) -> bool {
         let mut new_nodes_to_add = Vec::new();
-        let threshold = 0.75; // यदि दो विचारों के बीच संबंध इस से ज्यादा मजबूत है
+        let threshold = 0.75;
 
-        // बोरो चेकर से बचने के लिए नोड्स की लिस्ट क्लोन कर रहे हैं
         let node_items: Vec<(String, SymbolNode)> = self.nodes.iter().map(|(k, v)| (k.clone(), v.clone())).collect();
 
         for (parent_id, node) in &node_items {
             for (target_id, weight) in &node.connections {
                 if *weight >= threshold {
-                    // यदि पैरेंट और टारगेट दोनों के पास आपस में मजबूत लिंक है, तो हाइब्रिड विचार पैदा करें
                     if let Some(target_node) = self.nodes.get(target_id) {
                         if target_node.connections.contains_key(parent_id) {
                             let clean_parent = parent_id.split('(').next().unwrap_or(parent_id).trim();
@@ -159,7 +173,6 @@ impl SemanticNetwork {
                 }
             }
 
-            // यहाँ ऑटोनॉमस सिंथेसिस को भी ट्रिगर कर देते हैं ताकि नए हाइब्रिड विचार बन सकें
             if self.synthesize_concepts(memory_file) {
                 structural_changed = true;
             }
@@ -223,4 +236,4 @@ impl SemanticNetwork {
             }
         }
     }
-} 
+}
