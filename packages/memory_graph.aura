@@ -1,0 +1,16 @@
+# ==============================================================================
+# AURA Advanced Module: Persistent Memory Graph (memory_graph.aura)
+# ==============================================================================
+
+# अल्पकालिक और दीर्घकालिक स्मृति के बीच का सेमांटिक पुल
+INJECT "Short_Term_Memory" -> "Working_Buffer" (0.94)
+INJECT "Working_Buffer" -> "Long_Term_Store" (0.88)
+
+# स्मृति रिकॉल और वजन समायोजन नियम
+INJECT "Recall_Query" -> "Memory_Retrieval" (0.97)
+INJECT "Memory_Retrieval" -> "Context_Integration" (0.95)
+
+IF "Context_Integration" {
+    INJECT "Long_Term_Store" -> "Active_Awareness" (0.99)
+    PROPAGATE "Active_Awareness" DEPTH 4
+}

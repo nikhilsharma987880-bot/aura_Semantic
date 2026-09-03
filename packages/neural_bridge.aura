@@ -1,0 +1,13 @@
+# ==============================================================================
+# AURA Standard Package: Neural Bridge (neural_bridge.aura)
+# ==============================================================================
+
+# आंतरिक सेमांटिक चेतना को बाहरी सिस्टम या API से जोड़ना
+INJECT "Semantic_Intent" -> "Neural_Bridge_Gateway" (0.99)
+INJECT "Neural_Bridge_Gateway" -> "External_Execution_Layer" (0.97)
+
+# यदि बाहरी ब्रिज सक्रिय हो, तो डेटा का आदान-प्रदान शुरू करो
+IF "Neural_Bridge_Gateway" {
+    INJECT "External_Execution_Layer" -> "System_Actuator" (0.98)
+    PROPAGATE "System_Actuator" DEPTH 3
+}

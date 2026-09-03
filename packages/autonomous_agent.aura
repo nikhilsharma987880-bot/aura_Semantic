@@ -1,0 +1,16 @@
+# ==============================================================================
+# AURA Advanced Module: Autonomous Agent Loop (autonomous_agent.aura)
+# ==============================================================================
+
+# लक्ष्य और उप-लक्ष्य पदानुक्रम
+INJECT "Primary_Goal" -> "Sub_Goal_Decomposition" (0.98)
+INJECT "Sub_Goal_Decomposition" -> "Execution_Vector" (0.96)
+
+# स्व-निर्णय और डायनेमिक लूप समायोजन
+INJECT "Execution_Vector" -> "Feedback_Analysis" (0.92)
+INJECT "Feedback_Analysis" -> "Weight_Adjustment" (0.95)
+
+IF "Weight_Adjustment" {
+    INJECT "Execution_Vector" -> "Self_Evolution" (0.97)
+    PROPAGATE "Self_Evolution" DEPTH 5
+}

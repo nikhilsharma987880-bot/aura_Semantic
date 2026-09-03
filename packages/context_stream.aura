@@ -1,0 +1,13 @@
+# ==============================================================================
+# AURA Advanced Module: Context Stream & Memory Manager (context_stream.aura)
+# ==============================================================================
+
+# कॉन्टेक्स्ट स्ट्रीमिंग और इतिहास प्रबंधन
+INJECT "Active_Context_Buffer" -> "Stream_Controller" (0.96)
+INJECT "Stream_Controller" -> "Pruning_Engine" (0.92)
+
+# यदि पुरानी मेमोरीज को साफ करना हो, तो केवल प्रासंगिक स्टेट्स को रखें
+IF "Pruning_Engine" {
+    INJECT "Pruning_Engine" -> "Streamlined_Memory_State" (0.98)
+    PROPAGATE "Streamlined_Memory_State" DEPTH 3
+}
