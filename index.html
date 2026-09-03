@@ -10,7 +10,13 @@
         h1 { font-size: 2.5rem; color: #58a6ff; margin: 0; }
         p.tagline { font-size: 1.1rem; color: #8b949e; margin-top: 10px; padding: 0 10px; }
         .container { max-width: 900px; margin: 30px auto; padding: 0 15px; }
-        .install-box { background: #161b22; border: 1px solid #30363d; padding: 15px; border-radius: 8px; text-align: center; font-family: monospace; font-size: 0.95rem; color: #a5d6ff; margin-bottom: 30px; word-break: break-all; }
+        .install-box { background: #161b22; border: 1px solid #30363d; padding: 15px; border-radius: 8px; text-align: center; font-family: monospace; font-size: 0.95rem; color: #a5d6ff; margin-bottom: 20px; word-break: break-all; }
+        
+        /* नया डाउनलोड बटन स्टाइल */
+        .download-btn-container { text-align: center; margin-bottom: 30px; }
+        .btn-download { display: inline-block; background-color: #238636; color: #ffffff; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 1rem; border: 1px solid rgba(27,31,35,0.15); transition: background 0.2s; }
+        .btn-download:hover { background-color: #2ea043; }
+
         .section { background: #161b22; border: 1px solid #30363d; padding: 20px; border-radius: 8px; margin-bottom: 25px; }
         h2 { color: #f0f6fc; border-bottom: 1px solid #30363d; padding-bottom: 8px; font-size: 1.3rem; }
         pre { background: #010409; padding: 12px; border-radius: 6px; overflow-x: auto; color: #7ee787; font-family: monospace; font-size: 0.9rem; white-space: pre-wrap; word-wrap: break-word; }
@@ -27,8 +33,14 @@
     </header>
 
     <div class="container">
+        <!-- टर्मिनल कमांड बॉक्स -->
         <div class="install-box">
             $ curl -sSL https://raw.githubusercontent.com/nikhilsharma987880-bot/aura_Semantic/main/install.sh | bash
+        </div>
+
+        <!-- क्रोम यूजर के लिए डायरेक्ट डाउनलोड बटन -->
+        <div class="download-btn-container">
+            <a href="https://github.com/nikhilsharma987880-bot/aura_Semantic/archive/refs/heads/main.zip" class="btn-download">Download Source (.zip)</a>
         </div>
 
         <div class="section">
