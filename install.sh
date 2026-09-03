@@ -1,14 +1,23 @@
 #!/bin/bash
+set -e
 
-echo "[x] Compiling AURA Native Runtime (Black-box Mode)..."
+echo "[*] Cloning AURA Semantic Language repository..."
+rm -rf /tmp/aura_Semantic
+git clone https://github.com/nikhilsharma987880-bot/aura_Semantic.git /tmp/aura_Semantic
+
+echo "[*] Entering AURA directory & compiling native runtime..."
+cd /tmp/aura_Semantic
 cargo build --release
 
-if [ -f "target/release/aura" ]; then
-    echo "[x] Registering 'aura' command globally..."
-    sudo cp target/release/aura /usr/local/bin/aura
-    sudo chmod +x /usr/local/bin/aura
-    echo "[x] Success! AURA is now a standalone independent language."
-    echo "You can now open any terminal and type: aura init"
-else
-    echo "Error: Compilation failed. Check Rust setup."
+echo "[*] Installing AURA binary..."
+# बाइनरी को यूजर के लोकल बिन फोल्डर में कॉपी कर रहे हैं ताकि sudo की जरूरत न पड़े
+mkdir -p ~/.local/bin
+cp target/release/aura ~/.local/bin/aura
+
+# पाथ सुनिश्चित करना
+if [[ ":$PATH:" != ":$HOME/.local/bin:" ]]; then
+    echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+    export PATH="$HOME/.local/bin:$PATH"
 fi
+
+echo "[+] AURA successfully installed! Run 'aura --help' to get started."
